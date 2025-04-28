@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  db:
+    image: mysql:8.4
+    container_name: aztggdb-local
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: aztggdb
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
+    restart: unless-stopped
