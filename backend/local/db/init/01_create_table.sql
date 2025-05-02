@@ -7,6 +7,6 @@ CREATE TABLE aztggdb.recruitment_notice (
     url VARCHAR(511) NOT NULL,
     clickCount INTEGER DEFAULT '0',
     scrapedAt DATETIME NOT NULL,
-    startAt DATETIME NOT NULL,
+    startAt DATETIME DEFAULT NULL,
     endAt DATETIME DEFAULT NULL
 );
