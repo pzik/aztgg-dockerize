@@ -5,6 +5,7 @@ CREATE TABLE aztggdb.recruitment_notice (
     jobOfferTitle VARCHAR(127) NOT NULL,
     hash VARCHAR(511) NOT NULL,
     categories VARCHAR(511) DEFAULT NULL,
+    corporateCodes VARCHAR(511) DEFAULT NULL,
     url VARCHAR(511) NOT NULL,
     clickCount INTEGER DEFAULT '0',
     scrapedAt DATETIME NOT NULL,
