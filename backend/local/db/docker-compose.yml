@@ -8,5 +8,13 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - ./init:/docker-entrypoint-initdb.d
+      - ./init-mysql:/docker-entrypoint-initdb.d
     restart: unless-stopped
+  redis:
+    image: "bitnami/redis:7.2.4"
+    hostname: aztgg-redis
+    container_name: aztgg-redis
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - "6379:6379"
