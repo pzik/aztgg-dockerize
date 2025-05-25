@@ -12,3 +12,19 @@ CREATE TABLE aztggdb.recruitment_notice (
     startAt DATETIME DEFAULT NULL,
     endAt DATETIME DEFAULT NULL
 );
+
+CREATE TABLE aztggdb.subscribe_email (
+    subscribeEmailId BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(31) NOT NULL,
+    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    modifiedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE KEY subscribe_email_uk_email(email)
+);
+
+CREATE TABLE aztggdb.subscribe_email_category (
+    subscribeEmailCategoryId BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    subscribeEmailId BIGINT NOT NULL,
+    category VARCHAR(31) NOT NULL,
+    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    modifiedAt DATETIME DEFAULT CURRENT_TIMESTAMP
+);
