@@ -1,3 +1,7 @@
+DROP TABLE IF EXISTS aztggdb.recruitment_notice;
+DROP TABLE IF EXISTS aztggdb.subscribe_email;
+DROP TABLE IF EXISTS aztggdb.subscribe_email_category;
+
 CREATE TABLE aztggdb.recruitment_notice (
     recruitmentNoticeId BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     companyCode VARCHAR(31) NOT NULL,
@@ -5,6 +9,7 @@ CREATE TABLE aztggdb.recruitment_notice (
     jobOfferTitle VARCHAR(127) NOT NULL,
     hash VARCHAR(511) NOT NULL,
     categories VARCHAR(511) DEFAULT NULL,
+    standardCategory VARCHAR(31) DEFAULT NULL,
     corporateCodes VARCHAR(511) DEFAULT NULL,
     url VARCHAR(511) NOT NULL,
     clickCount INTEGER DEFAULT '0',
