@@ -37,7 +37,11 @@ CREATE TABLE aztggdb.subscribe_email_category (
 
 CREATE TABLE aztggdb.hot_issue (
     hotIssueId BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    recruitmentNoticeId BIGINT NOT NULL,
+    recruitmentNoticeId BIGINT DEFAULT NULL,
+    title VARCHAR(1027) DEFAULT NULL,
+    content TEXT DEFAULT NULL,
+    startAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+    endAt DATETIME DEFAULT CURRENT_TIMESTAMP,
     createdAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     modifiedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
     KEY hot_issue_nc_recruitmentNoticeId(recruitmentNoticeId)
@@ -48,6 +52,7 @@ CREATE TABLE aztggdb.hot_issue_comment (
     hotIssueId BIGINT NOT NULL,
     ip VARCHAR(31) NOT NULL,
     content VARCHAR(1027) NOT NULL,
+    anonymousName VARCHAR(127) NOT NULL,
     createdAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     modifiedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
     KEY hot_issue_comment_nc_hotIssueId(hotIssueId)
