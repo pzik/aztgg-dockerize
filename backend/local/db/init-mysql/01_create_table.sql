@@ -1,6 +1,8 @@
 DROP TABLE IF EXISTS aztggdb.recruitment_notice;
 DROP TABLE IF EXISTS aztggdb.subscribe_email;
 DROP TABLE IF EXISTS aztggdb.subscribe_email_category;
+DROP TABLE IF EXISTS aztggdb.hot_issue;
+DROP TABLE IF EXISTS aztggdb.hot_issue_comment;
 
 CREATE TABLE aztggdb.recruitment_notice (
     recruitmentNoticeId BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -16,7 +18,7 @@ CREATE TABLE aztggdb.recruitment_notice (
     scrapedAt DATETIME NOT NULL,
     startAt DATETIME DEFAULT NULL,
     endAt DATETIME DEFAULT NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE aztggdb.subscribe_email (
     subscribeEmailId BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -24,7 +26,7 @@ CREATE TABLE aztggdb.subscribe_email (
     createdAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     modifiedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
     UNIQUE KEY subscribe_email_uk_email(email)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE aztggdb.subscribe_email_category (
     subscribeEmailCategoryId BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -33,7 +35,7 @@ CREATE TABLE aztggdb.subscribe_email_category (
     createdAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     modifiedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
     KEY subscribe_email_category_nc_subscribeEmailId(subscribeEmailId)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE aztggdb.hot_issue (
     hotIssueId BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -45,7 +47,7 @@ CREATE TABLE aztggdb.hot_issue (
     createdAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     modifiedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
     KEY hot_issue_nc_recruitmentNoticeId(recruitmentNoticeId)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE aztggdb.hot_issue_comment (
     hotIssueCommentId BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -56,4 +58,4 @@ CREATE TABLE aztggdb.hot_issue_comment (
     createdAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     modifiedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
     KEY hot_issue_comment_nc_hotIssueId(hotIssueId)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
