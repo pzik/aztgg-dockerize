@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS aztggdb.users;
 DROP TABLE IF EXISTS aztggdb.recruitment_notice;
 DROP TABLE IF EXISTS aztggdb.subscribe_email;
 DROP TABLE IF EXISTS aztggdb.subscribe_email_category;
@@ -58,4 +59,15 @@ CREATE TABLE aztggdb.hot_issue_comment (
     createdAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     modifiedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
     KEY hot_issue_comment_nc_hotIssueId(hotIssueId)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE aztggdb.users (
+    id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    role VARCHAR(31) NOT NULL,
+    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
