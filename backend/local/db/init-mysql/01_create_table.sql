@@ -110,7 +110,7 @@ CREATE TABLE aztggdb.recruitment_notice_statistic
     count                           INT          NOT NULL,
     createdAt                      DATETIME    NOT NULL,
     INDEX idx_company_category_date (companyCode, standardCategory, createdAt)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE aztggdb.retryable_recruitment_notice_statistic
 (
@@ -118,4 +118,4 @@ CREATE TABLE aztggdb.retryable_recruitment_notice_statistic
     recruitmentNoticeId                     BIGINT    NOT NULL,
     createdAt                                DATETIME NOT NULL,
     INDEX idx_recruitment_notice_id (recruitmentNoticeId)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
