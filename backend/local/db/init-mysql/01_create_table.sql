@@ -101,3 +101,21 @@ CREATE TABLE aztggdb.board_like (
     modifiedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
     KEY board_like_nc_boardId(boardId)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE aztggdb.recruitment_notice_statistic
+(
+    recruitmentNoticeStatisticId BIGINT AUTO_INCREMENT PRIMARY KEY,
+    standardCategory               VARCHAR(255) NOT NULL,
+    companyCode                    VARCHAR(255) NOT NULL,
+    count                           INT          NOT NULL,
+    createdAt                      DATETIME    NOT NULL,
+    INDEX idx_company_category_date (companyCode, standardCategory, createdAt)
+);
+
+CREATE TABLE aztggdb.retryable_recruitment_notice_statistic
+(
+    retryableRecruitmentNoticeStatisticId BIGINT AUTO_INCREMENT PRIMARY KEY,
+    recruitmentNoticeId                     BIGINT    NOT NULL,
+    createdAt                                DATETIME NOT NULL,
+    INDEX idx_recruitment_notice_id (recruitmentNoticeId)
+);
