@@ -109,7 +109,8 @@ CREATE TABLE aztggdb.recruitment_notice_statistic
     companyCode                    VARCHAR(255) NOT NULL,
     count                           INT          NOT NULL,
     createdAt                      DATETIME    NOT NULL,
-    INDEX idx_company_category_date (companyCode, standardCategory, createdAt)
+    INDEX idx_company_category_date (companyCode, standardCategory, createdAt),
+    INDEX idx_company_date (companyCode, createdAt)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE aztggdb.retryable_recruitment_notice_statistic
